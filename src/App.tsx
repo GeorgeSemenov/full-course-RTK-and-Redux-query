@@ -1,14 +1,18 @@
 import React from "react";
 import "./App.css";
-import RecipeItem from "./recipe-item/RecipeItem";
+import RecipeItem from "./components/recipe-item/RecipeItem";
+import Header from "./components/header";
 
 function App() {
   return (
-    <div>
-      <RecipeItem id={1} name="Лазанья" />
-      <RecipeItem id={2} name="Каша Малафьяша" />
-      <RecipeItem id={3} name="Копи Паста" />
-    </div>
+    <>
+      <Header />
+      <div>
+        <RecipeItem id={1} name="Лазанья" />
+        <RecipeItem id={2} name="Каша Малафьяша" />
+        <RecipeItem id={3} name="Копи Паста" />
+      </div>
+    </>
   );
 }
 

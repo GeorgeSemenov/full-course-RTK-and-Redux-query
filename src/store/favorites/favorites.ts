@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { iRecipe } from "../../recipe-item/RecipeItem";
+import { iRecipe } from "../../components/recipe-item/RecipeItem";
 
-const initialState = [];
+const initialState: iRecipe[] = [];
 
 export const favoritesSlice = createSlice({
   name: "favorites",
-  initialState: [],
+  initialState,
   reducers: {
     toggleFavorites: (state: iRecipe[], { payload: recipe }) => {
       //удаляет, если рецепт уже есть и добавляет, если рецепта нет в сторе
@@ -28,5 +28,5 @@ export const favoritesSlice = createSlice({
   },
 });
 
-export const { reducer } = favoritesSlice;
+export const { reducer, actions } = favoritesSlice;
 export const { toggleFavorites } = favoritesSlice.actions;

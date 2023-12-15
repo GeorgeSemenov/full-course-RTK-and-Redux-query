@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { reducer as favoritesReducer } from "./favorites/favorites";
-import { iRecipe } from "../recipe-item/RecipeItem";
+import { iRecipe } from "../components/recipe-item/RecipeItem";
 
 //Если редукторов несколько, то их нужно объеденять с помощью
 //функции combineReducers
