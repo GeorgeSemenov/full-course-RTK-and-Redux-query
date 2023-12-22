@@ -5,7 +5,7 @@ const initialState: iRecipe[] = [];
 
 export const favoritesSlice = createSlice({
   name: "favorites",
-  initialState,
+  initialState, //инициированно, см выше.
   reducers: {
     toggleFavorites: (state: iRecipe[], { payload: recipe }) => {
       //удаляет, если рецепт уже есть и добавляет, если рецепта нет в сторе
