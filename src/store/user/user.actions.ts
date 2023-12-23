@@ -22,11 +22,17 @@ export const getUserById = createAsyncThunk(
   "users/by-id", //Первый аргумент - описание или название данного thunk
   async (userId: number, thunkApi) => {
     //Вторым аргументом идёт асинхронная функция, вторым аргументом принимает thunkApi
+    //Это объект содержащий все функции, которые содержатся в
+    //thunc функциях с некоторым расширением
+    //подробнее тут https://redux-toolkit.js.org/api/createAsyncThunk
     try {
       const response = await fetchUserById(userId);
       return response;
     } catch (err) {
-      thunkApi.console.error(`Абьщибкэ, насяльникэ!`, err);
+      console.error(`Абьщибкэ, насяльникэ!`, err);
+      thunkApi.rejectWithValue({}); //возвращает экшон генератором отвергнутый ответ
+      //т.е. rejected response(асинхронной функции запрос)
+      //с указанным payload'ом
     }
   }
 );
