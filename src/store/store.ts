@@ -1,11 +1,17 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { reducer as favoritesReducer } from "./favorites/favorites";
 import { iRecipe } from "../components/recipe-item/RecipeItem";
+import { userSlice } from "./user/user.slice";
 
 //Если редукторов несколько, то их нужно объеденять с помощью
 //функции combineReducers
 
-const reducers = combineReducers({ favorites: favoritesReducer });
+//Важно! - называть поля в combineReducers темиже именами, что и слайсы(у них есть поле name)
+const reducers = combineReducers({
+  favorites: favoritesReducer,
+  user: userSlice.reducer,
+});
+//Интересно, почему combineReducers принимает не только редукторы, но и слайсы?
 
 export const store = configureStore({
   reducer: reducers,

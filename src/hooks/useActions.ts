@@ -3,6 +3,8 @@ import { useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions as favoriteActions } from "../store/favorites/favorites";
+import { userSlice } from "../store/user/user.slice";
+import * as userAsyncActions from "../store/user/user.actions";
 
 /******************************************/
 //Пример использования см в RecipeItem.tsx
@@ -17,7 +19,9 @@ export const useActions = () => {
 
   //Тут будут храниться все экшоны нашего проекта
   const rootActions = {
-    ...favoriteActions,
+    ...favoriteActions, //Это просто синхронные экшон гейнераторы
+    ...userSlice.actions, //Это тоже просто синхронные экшон гейнераторы
+    ...userAsyncActions, //Это уже асинхронные экшоны, они хранятся в отдельном файле, для них используется thunc функция
   };
 
   //bindActionCreators - возвращает диспатч с уже указанным
