@@ -8,11 +8,16 @@ export const api = createApi({
     baseUrl: "http://localhost:4200/recipes",
   }),
   endpoints: (builder) => {
-    return {};
+    return {
+      //builder.query - получить данные с сервера
+      getRecipes: builder.query({
+        query: () => "/", //Укахываю / т.к. baseUrl - полностью совпадает с адресом запроса
+      }),
+    };
   }, //Специально описываю тут пустые endpoint'ы
   //Ниже приведён код с нормальными эндопинтами, но я их закекментировал, т.к.
   //в больших проектах эндпоинты разделяются по логике в разные файлы
-  //enpoint'ы для рецептов я вынес в отдельный файл recipe.api.ts
+  //enpoint'ы для рецептов я вынес в отдельный файл recipe.api.ts но не уверен, что инжекция происходит корректно
   //Ниже комментарии оставляю для наглядности.
   /*
   endpoints: (builder) => {
@@ -34,3 +39,5 @@ export const api = createApi({
     };
   },*/
 });
+
+export const { useGetRecipesQuery } = api;

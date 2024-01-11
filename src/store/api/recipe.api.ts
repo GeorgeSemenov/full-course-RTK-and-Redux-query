@@ -4,13 +4,11 @@
 
 import { api } from "./api";
 
+//Внимание - нет уверенности что инжекция происходит корректно,
+//Потому что эндпоинт createRecipe так и не удалось использовать
 export const recipeApi = api.injectEndpoints({
   endpoints: (builder) => {
     return {
-      //builder.query - получить данные с сервера
-      getRecipes: builder.query({
-        query: () => "/", //Укахываю / т.к. baseUrl - полностью совпадает с адресом запроса
-      }),
       //builder.mutation - отправить запрос на сервер для изменений на нём данных
       createRecipe: builder.mutation({
         //Делаем как в query только теперь функция вносит изменения
