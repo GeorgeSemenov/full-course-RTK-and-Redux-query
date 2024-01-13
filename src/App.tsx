@@ -1,9 +1,10 @@
 import React from "react";
 import "./App.css";
-import RecipeItem from "./components/recipe-item/RecipeItem";
+import RecipeItem, { iRecipe } from "./components/recipe-item/RecipeItem";
 import Header from "./components/header";
 import User from "./components/user";
 import { useGetRecipesQuery } from "./store/api/api";
+import CreateRecipe from "./components/create-recipe";
 
 function App() {
   const { isLoading, data } = useGetRecipesQuery("");
@@ -11,11 +12,16 @@ function App() {
   return (
     <>
       <Header />
+      <CreateRecipe />
       <div>
         {isLoading ? (
           <div>Загружаю товары</div>
+        ) : data ? (
+          data.map((recipe: iRecipe) => (
+            <RecipeItem key={recipe.id} {...recipe} />
+          ))
         ) : (
-          data.map((recipe) => <RecipeItem recipe={recipe} />)
+          <div>Recipes not found (check if your json server is running)</div>
         )}
         {}
       </div>

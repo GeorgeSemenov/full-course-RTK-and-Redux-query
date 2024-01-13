@@ -22,3 +22,8 @@ export const recipeApi = api.injectEndpoints({
     };
   },
 });
+
+//useCreateRecipeMutation - хук для мутаций, он строится на
+//endpoint'е который мы описали, просто к его началу добавлен
+//use а в конце написанно Mutation
+export const { useCreateRecipeMutation } = recipeApi;
